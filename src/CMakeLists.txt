@@ -12,25 +12,31 @@ if(CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)
   # Add custom cmake utils
   set(CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake" ${CMAKE_MODULE_PATH})
 
-  # Tests are only available if this is the main project
-  option(PACKAGE_TESTS "Enable building the matrix class tests" ON)
+  # Add test and coverage report targets
+  option(BUILD_TESTING "Builds only the test executable." OFF)
+  option(CODE_COVERAGE "Collect coverage from test library" OFF)
 
-  if(PACKAGE_TESTS)
+  if(BUILD_TESTING)
     enable_testing()
-    add_subdirectory(tests)
+  endif()
+
+  if(BUILD_TESTING AND ENABLE_COVERAGE)
+    include(CodeCoverage)
+    append_coverage_compiler_flags()
+    
+    setup_target_for_coverage_gcovr_html(
+      NAME "gcov_coverage_report"
+      EXECUTABLE ctest
+      EXCLUDE "tests/*"
+    )
   endif()
 
   # Set app wide compiller options
   add_compile_options(-Wall -Werror -Wextra)
-
-  # Docs are only available if this is the main project
-  find_package(Doxygen)
-
-  if(Doxygen_FOUND)
-    add_subdirectory(docs)
-  else()
-    message(STATUS "Doxygen not found, not building docs")
-  endif()
 endif()
 
 add_subdirectory("src")
+
+if(BUILD_TESTING AND CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)
+  add_subdirectory(tests)
+endif()
