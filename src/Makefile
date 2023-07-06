@@ -7,6 +7,11 @@ CMAKE_BUILD_TYPE := Debug
 BUILD_DIR = $(CMAKE_ROOT)/../build/$(CMAKE_BUILD_TYPE)/
 INSTALL_DIR = $(CMAKE_ROOT)/../_install_dir/
 
+# Hardocoded test exec
+# This defenitly should be changed to use "ctest -T memcheck" instead, but didn't
+# find an easy way how to do that
+HARDCODED_TEST_EXEX = $(BUILD_DIR)/tests/tests_matrix_oop
+
 SRC := $(shell find $(CMAKE_ROOT) -name "*.c" -o -name "*.cpp")
 HEADERS := $(shell find $(CMAKE_ROOT) -name "*.h" -o -name "*.hpp")
 
@@ -16,7 +21,7 @@ all: install
 
 lint:
 	@clang-format --style=Google --Werror --dry-run $(SRC) $(HEADERS) && echo "Clagn-format passed"
-	@cppcheck $(SRC) $(HEADERS)
+	@cppcheck $(SRC) $(HEADERS) --language=c++
 
 fmt:
 	@clang-format --style=Google --Werror -i $(SRC) $(HEADERS) && echo "Formatted"
@@ -28,6 +33,9 @@ build:
 test: tests
 tests: build
 	ctest --output-on-failure --test-dir $(BUILD_DIR)
+
+valgrind_tests: build
+	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --verbose --error-exitcode=1 $(HARDCODED_TEST_EXEX)
 
 gcov_report: ENABLE_COVERAGE = ON
 gcov_report: build
