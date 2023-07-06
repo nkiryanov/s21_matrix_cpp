@@ -6,6 +6,7 @@ add_library(
   getters.cpp
   constructors.cpp
   operators.cpp
+  equal_matrix.cpp
   mul_matrix.cpp
   ${HEADER_LIST}
 )

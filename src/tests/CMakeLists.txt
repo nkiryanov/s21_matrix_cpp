@@ -5,6 +5,7 @@ add_executable(
   "tests_matrix_oop"
   matrix/tests_constuctors.cpp
   matrix/tests_operators.cpp
+  matrix/tests_eq_matrix.cpp
   matrix/tests_mul_matrix.cpp
 )
 
