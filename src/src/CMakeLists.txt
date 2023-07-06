@@ -10,10 +10,3 @@ target_include_directories(
   "s21_matrix_oop"
   PUBLIC ../include
 )
-
-# IDEs should put the headers in a nice place
-source_group(
-  TREE "${PROJECT_SOURCE_DIR}/include"
-  PREFIX "Header Files"
-  FILES ${HEADER_LIST}
-)

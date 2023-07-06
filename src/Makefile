@@ -4,7 +4,8 @@ BUILD_TESTING := ON
 ENABLE_COVERAGE := OFF
 CMAKE_BUILD_TYPE := Debug
 
-BUILD_DIR = ../build/$(CMAKE_BUILD_TYPE)/
+BUILD_DIR = $(CMAKE_ROOT)/../build/$(CMAKE_BUILD_TYPE)/
+INSTALL_DIR = $(CMAKE_ROOT)/../_install_dir/
 
 SRC := $(shell find $(CMAKE_ROOT) -name "*.c" -o -name "*.cpp")
 HEADERS := $(shell find $(CMAKE_ROOT) -name "*.h" -o -name "*.hpp")
@@ -35,10 +36,14 @@ gcov_report: build
 install: BUILD_TESTING = OFF
 install: CMAKE_BUILD_TYPE = Release
 install: build
+	cmake --install $(BUILD_DIR)
+
+uninstall:
+	rm -rf $(INSTALL_DIR)
 
 echo:
 	@echo "HEADERS = $(HEADERS)"
 	@echo "SRC = $(SRC)"
 
-clean:
-	rm -rf ../build
+clean: uninstall
+	rm -rf $(BUILD_DIR) 
