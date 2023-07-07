@@ -25,6 +25,8 @@ class S21Matrix {
   int Rows() const;
   int Columns() const;
   const std::vector<double>& Data() const;
+  void SetRows(int desired_rows);
+  void SetColumns(int desired_columns);
 
   bool EqMatrix(const S21Matrix& other) const;
   void SubMatrix(const S21Matrix& other);

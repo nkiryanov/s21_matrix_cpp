@@ -16,11 +16,20 @@ TEST(MatrixConstructors, MatrixSizeCreateSquareMatrix) {
   EXPECT_EQ(matrix.Data(), expected_values);
 }
 
-TEST(MatrixConstructors, Create4x4MatrixByDefault) {
+TEST(MatrixConstructors, CreatedEmptyMatrixByDefault) {
   s21::S21Matrix matrix;
 
   EXPECT_EQ(matrix.Rows(), 0);
   EXPECT_EQ(matrix.Columns(), 0);
+  EXPECT_EQ(matrix.Data().size(), 0);
+}
+
+TEST(MatrixConstructors, CreatedEmptyMatrixIfAnyOfDimensionEqualZero) {
+  s21::S21Matrix matrix(5, 0);
+
+  EXPECT_EQ(matrix.Rows(), 5);
+  EXPECT_EQ(matrix.Columns(), 0);
+  EXPECT_EQ(matrix.Data().size(), 0);
 }
 
 TEST(MatrixConstructors, CreateMatrixWithRowsAndColumnsIfSet) {
@@ -95,10 +104,6 @@ TEST(MatrixConstructors, MoveAssignmentWorks) {
   EXPECT_EQ(existed_matrix.Columns(), 1);
   EXPECT_THAT(existed_matrix.Data(), ElementsAre(1, 2));
   EXPECT_EQ(matrix_to_move.Data().size(), 0);  // actually moved
-}
-
-TEST(MatrixConstructors, ThrowIfRowsOrColumnsEqualsZero) {
-  EXPECT_THROW(s21::S21Matrix matrix(3, 0), std::invalid_argument);
 }
 
 TEST(MatrixConstructors, ThrowIfRowsOrColumnsNegative) {

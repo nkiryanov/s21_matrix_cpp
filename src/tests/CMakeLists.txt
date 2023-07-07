@@ -5,6 +5,7 @@ add_executable(
   "tests_matrix_oop"
   matrix/tests_constuctors.cc
   matrix/tests_getters.cc
+  matrix/tests_setters.cc
   matrix/tests_operator_get_by_index.cc
   matrix/tests_eq_matrix.cc
   matrix/tests_sum_matrix.cc
