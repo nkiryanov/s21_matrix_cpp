@@ -6,8 +6,8 @@
 namespace s21 {
 
 static int VerifyRange(int matrix_dimension) {
-  if (matrix_dimension <= 0) {
-    throw std::invalid_argument("Row or colons must be positive");
+  if (matrix_dimension < 0) {
+    throw std::invalid_argument("Row or colons must be not negative");
   }
 
   return matrix_dimension;
