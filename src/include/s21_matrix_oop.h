@@ -18,6 +18,8 @@ class S21Matrix {
   S21Matrix(int rows);
   S21Matrix(int rows, int columns);
   S21Matrix(int rows, int columns, std::initializer_list<double> values);
+  S21Matrix(int rows, int columns,
+            std::initializer_list<std::initializer_list<double>> rows_list);
 
   double Epsilon() const;
   int Rows() const;
