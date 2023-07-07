@@ -9,6 +9,7 @@ add_executable(
   matrix/tests_eq_matrix.cpp
   matrix/tests_sum_matrix.cpp
   matrix/tests_subtact_matrix.cpp
+  matrix/tests_multiply_number.cpp
   matrix/tests_multiply_matrix.cpp
 )
 

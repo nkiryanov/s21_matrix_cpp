@@ -27,6 +27,7 @@ class S21Matrix {
   bool EqMatrix(const S21Matrix& other) const;
   void SubMatrix(const S21Matrix& other);
   void SumMatrix(const S21Matrix& other);
+  void MulNumber(double number);
   void MulMatrix(const S21Matrix& other);
 
   const double& operator()(int row, int column) const;
@@ -38,7 +39,11 @@ class S21Matrix {
   S21Matrix& operator-=(const S21Matrix& other);
   S21Matrix operator*(const S21Matrix& other) const;
   S21Matrix& operator*=(const S21Matrix& other);
+  S21Matrix operator*(double number) const;
+  S21Matrix& operator*=(double number);
 };
+
+S21Matrix operator*(double number, const S21Matrix& matrix);
 
 }  // namespace s21
 

@@ -9,6 +9,7 @@ add_library(
   equal_matrix.cpp
   sum_matrix.cpp
   subtract_matrix.cpp
+  multiply_number.cpp
   multiply_matrix.cpp
   ${HEADER_LIST}
 )
