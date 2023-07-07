@@ -15,6 +15,7 @@ add_executable(
   matrix/tests_minor_matrix.cc
   matrix/tests_determinant_matrix.cc
   matrix/tests_calc_complements_matrix.cc
+  matrix/tests_inverse_matrix.cc
 )
 
 target_link_libraries(
