@@ -55,3 +55,17 @@ TEST(MatrixEq, FalseIfValuesDiffersMoreThanEpsilon) {
 
   EXPECT_FALSE(result);
 }
+
+TEST(MatrixEq, EqOperatorReturnTrueEqualMatrices) {
+  const s21::S21Matrix first(3, 1, {1.00000001, 2, 3});
+  const s21::S21Matrix second(3, 1, {1.00000005, 2, 3});
+
+  EXPECT_TRUE(first == second);
+}
+
+TEST(MatrixEq, EqOperatorReturnFalseEqualMatrices) {
+  const s21::S21Matrix first(1, 1, {1});
+  const s21::S21Matrix second(1, 1, {10});
+
+  EXPECT_FALSE(first == second);
+}

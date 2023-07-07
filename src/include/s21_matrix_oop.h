@@ -25,11 +25,14 @@ class S21Matrix {
   const std::vector<double>& Data() const;
 
   bool EqMatrix(const S21Matrix& other) const;
+  void SumMatrix(const S21Matrix& other);
   void MulMatrix(const S21Matrix& other);
 
   const double& operator()(int row, int column) const;
   double& operator()(int row, int column);
   bool operator==(const S21Matrix& other) const;
+  S21Matrix operator+(const S21Matrix& other) const;
+  S21Matrix& operator+=(const S21Matrix& other);
   S21Matrix operator*(const S21Matrix& other) const;
   S21Matrix& operator*=(const S21Matrix& other);
 };

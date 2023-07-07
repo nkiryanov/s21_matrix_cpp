@@ -5,8 +5,9 @@ add_library(
   s21_matrix_oop.cpp
   getters.cpp
   constructors.cpp
-  operators.cpp
+  get_by_index_operator.cpp
   equal_matrix.cpp
+  sum_matrix.cpp
   mul_matrix.cpp
   ${HEADER_LIST}
 )
