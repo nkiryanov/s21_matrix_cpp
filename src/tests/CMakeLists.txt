@@ -3,14 +3,15 @@ include(GoogleTest)
 
 add_executable(
   "tests_matrix_oop"
-  matrix/tests_constuctors.cpp
-  matrix/tests_getters.cpp
-  matrix/tests_operator_get_by_index.cpp
-  matrix/tests_eq_matrix.cpp
-  matrix/tests_sum_matrix.cpp
-  matrix/tests_subtact_matrix.cpp
-  matrix/tests_multiply_number.cpp
-  matrix/tests_multiply_matrix.cpp
+  matrix/tests_constuctors.cc
+  matrix/tests_getters.cc
+  matrix/tests_operator_get_by_index.cc
+  matrix/tests_eq_matrix.cc
+  matrix/tests_sum_matrix.cc
+  matrix/tests_subtact_matrix.cc
+  matrix/tests_multiply_number.cc
+  matrix/tests_multiply_matrix.cc
+  matrix/tests_transpose_matrix.cc
 )
 
 target_link_libraries(
