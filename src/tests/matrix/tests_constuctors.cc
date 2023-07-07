@@ -4,6 +4,8 @@
 #include "gtest/gtest.h"
 #include "s21_matrix_oop.h"
 
+using ::testing::ElementsAre;
+
 TEST(MatrixConstructors, MatrixSizeCreateSquareMatrix) {
   std::vector<double> expected_values(25, 0);
 
@@ -31,14 +33,24 @@ TEST(MatrixConstructors, CreateMatrixWithRowsAndColumnsIfSet) {
   EXPECT_EQ(matrix.Data(), expected_values);
 }
 
-TEST(MatrixConstructors, CreateMatrixWithPredefinedValues) {
-  std::vector<double> expected_values{1, 2, 3, 4, 5, 6};
-
+TEST(MatrixConstructors, CreateMatrixWithPredefinedValuesInOneList) {
   s21::S21Matrix matrix(2, 3, {1, 2, 3, 4, 5, 6});
 
   EXPECT_EQ(matrix.Rows(), 2);
   EXPECT_EQ(matrix.Columns(), 3);
-  EXPECT_EQ(matrix.Data(), expected_values);
+  EXPECT_THAT(matrix.Data(), ElementsAre(1, 2, 3, 4, 5, 6));
+}
+
+TEST(MatrixConstructors, CreateMatrixWithPredefinedValuesInListOfLists) {
+  s21::S21Matrix matrix(2, 3,
+                        {
+                            {1, 2, 3},
+                            {4, 5, 6},
+                        });
+
+  EXPECT_EQ(matrix.Rows(), 2);
+  EXPECT_EQ(matrix.Columns(), 3);
+  EXPECT_THAT(matrix.Data(), ElementsAre(1, 2, 3, 4, 5, 6));
 }
 
 TEST(MatrixConstructors, CreateByCopyAssignmentWorks) {
@@ -69,7 +81,7 @@ TEST(MatrixConstructors, MoveConstructorWorks) {
 
   EXPECT_EQ(created_matrix.Rows(), 2);
   EXPECT_EQ(created_matrix.Columns(), 1);
-  EXPECT_THAT(created_matrix.Data(), ::testing::ElementsAre(1, 2));
+  EXPECT_THAT(created_matrix.Data(), ElementsAre(1, 2));
   EXPECT_EQ(matrix_to_move.Data().size(), 0);  // actually moved
 }
 
@@ -81,7 +93,7 @@ TEST(MatrixConstructors, MoveAssignmentWorks) {
 
   EXPECT_EQ(existed_matrix.Rows(), 2);
   EXPECT_EQ(existed_matrix.Columns(), 1);
-  EXPECT_THAT(existed_matrix.Data(), ::testing::ElementsAre(1, 2));
+  EXPECT_THAT(existed_matrix.Data(), ElementsAre(1, 2));
   EXPECT_EQ(matrix_to_move.Data().size(), 0);  // actually moved
 }
 
@@ -95,4 +107,26 @@ TEST(MatrixConstructors, ThrowIfRowsOrColumnsNegative) {
 
 TEST(MatrixConstructors, ThrowIfRowsInitializerListNotMatchRowsAndColumns) {
   EXPECT_THROW(s21::S21Matrix matrix(2, 2, {1, 0}), std::invalid_argument);
+}
+
+TEST(MatrixConstructors, ThrowIfListOfListNotMatchRows) {
+  EXPECT_THROW(s21::S21Matrix matrix(2, 2,
+                                     {
+                                         // Only two rows expected
+                                         {1, 2},
+                                         {3, 4},
+                                         {5, 6},
+                                     }),
+               std::invalid_argument);
+}
+
+TEST(MatrixConstructors, ThrowIfListOfListNotMatchColumns) {
+  EXPECT_THROW(
+      s21::S21Matrix matrix(2, 2,
+                            {
+                                {1, 2, 3},  // Only two columns expected
+                                {3, 4},
+                                {5, 6},
+                            }),
+      std::invalid_argument);
 }
