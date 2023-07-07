@@ -8,7 +8,8 @@ add_executable(
   matrix/tests_operator_get_by_index.cpp
   matrix/tests_eq_matrix.cpp
   matrix/tests_sum_matrix.cpp
-  matrix/tests_mul_matrix.cpp
+  matrix/tests_subtact_matrix.cpp
+  matrix/tests_multiply_matrix.cpp
 )
 
 target_link_libraries(

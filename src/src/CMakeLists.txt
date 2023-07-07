@@ -8,7 +8,8 @@ add_library(
   get_by_index_operator.cpp
   equal_matrix.cpp
   sum_matrix.cpp
-  mul_matrix.cpp
+  subtract_matrix.cpp
+  multiply_matrix.cpp
   ${HEADER_LIST}
 )
 
