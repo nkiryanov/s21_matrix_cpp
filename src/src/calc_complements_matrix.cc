@@ -1,0 +1,28 @@
+#include <stdexcept>
+
+#include "s21_matrix_oop.h"
+
+namespace s21 {
+
+S21Matrix S21Matrix::CalcComplements() const {
+  // Edge cases
+  if (this->Rows() != this->Columns() || this->Rows() == 0) {
+    throw std::logic_error(
+        "Complements matrix could be computed only for not empty square "
+        "matrices");
+  }
+
+  // Regular cases
+  int size = this->Rows();
+  S21Matrix complements(size);
+
+  for (int i = 0; i != size; ++i) {
+    for (int j = 0; j != size; ++j) {
+      int sign = ((i + j) % 2 == 0) ? 1 : -1;
+      complements(i, j) = sign * (*this).MinorMatrix(i, j).Determinant();
+    }
+  }
+
+  return complements;
+}
+}  // namespace s21
