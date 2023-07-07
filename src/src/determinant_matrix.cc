@@ -4,6 +4,8 @@
 
 namespace s21 {
 
+// We use primitive recursion algorithm that is not efficient for matrices sized
+// more than 5 (and becomes significant for size > 8) but it's ok for the task
 double S21Matrix::Determinant() const {
   // Edge cases
   if (this->Rows() != this->Columns() || this->Rows() == 0) {

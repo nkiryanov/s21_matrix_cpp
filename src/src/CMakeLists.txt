@@ -14,6 +14,8 @@ add_library(
   transpose_matrix.cc
   minor_matrix.cc
   determinant_matrix.cc
+  calc_complements_matrix.cc
+  inverse_matrix.cc
   ${HEADER_LIST}
 )
 

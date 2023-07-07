@@ -35,6 +35,8 @@ class S21Matrix {
   S21Matrix Transpose() const;
   S21Matrix MinorMatrix(int row, int column) const;
   double Determinant() const;
+  S21Matrix CalcComplements() const;
+  S21Matrix InverseMatrix() const;
 
   const double& operator()(int row, int column) const;
   double& operator()(int row, int column);
