@@ -2,7 +2,9 @@
 
 #include "s21_matrix_oop.h"
 
-void s21::S21Matrix::MulMatrix(const S21Matrix& other) {
+namespace s21 {
+
+void S21Matrix::MulMatrix(const S21Matrix& other) {
   if (this->columns_ != other.rows_) {
     throw std::invalid_argument(
         "Number of columns of the matrix has to be equal number or rows of "
@@ -23,3 +25,17 @@ void s21::S21Matrix::MulMatrix(const S21Matrix& other) {
 
   *this = std::move(result);
 }
+
+S21Matrix S21Matrix::operator*(const S21Matrix& other) const {
+  S21Matrix result(*this);
+  result.MulMatrix(other);
+
+  return result;
+}
+
+S21Matrix& S21Matrix::operator*=(const S21Matrix& other) {
+  this->MulMatrix(other);
+  return *this;
+}
+
+}  // namespace s21

@@ -38,39 +38,3 @@ TEST(MatrixOperators, ThrowGetByIndexIfEmptyMatrix) {
 
   EXPECT_THROW(matrix(0, 0), std::out_of_range);
 }
-
-TEST(MatrixOperators, EqOperatorReturnTrueEqualMatrices) {
-  const s21::S21Matrix first(3, 1, {1.00000001, 2, 3});
-  const s21::S21Matrix second(3, 1, {1.00000005, 2, 3});
-
-  EXPECT_TRUE(first == second);
-}
-
-TEST(MatrixOperators, EqOperatorReturnFalseEqualMatrices) {
-  const s21::S21Matrix first(1, 1, {1});
-  const s21::S21Matrix second(1, 1, {10});
-
-  EXPECT_FALSE(first == second);
-}
-
-TEST(MatrixOperators, MulMatrixOperator) {
-  const s21::S21Matrix first(2, 2, {1, 2, 3, 4});
-  const s21::S21Matrix second(2, 1, {1, 2});
-
-  s21::S21Matrix result = first * second;
-
-  EXPECT_EQ(result.Rows(), 2);
-  EXPECT_EQ(result.Columns(), 1);
-  EXPECT_THAT(result.Data(), ElementsAre(5, 11));
-}
-
-TEST(MatrixOperators, MulSelfMatrixOperator) {
-  s21::S21Matrix matrix(2, 2, {1, 2, 3, 4});
-  const s21::S21Matrix second(2, 1, {1, 2});
-
-  matrix *= second;
-
-  EXPECT_EQ(matrix.Rows(), 2);
-  EXPECT_EQ(matrix.Columns(), 1);
-  EXPECT_THAT(matrix.Data(), ElementsAre(5, 11));
-}

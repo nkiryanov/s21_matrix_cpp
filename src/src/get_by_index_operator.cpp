@@ -20,10 +20,6 @@ static void VerifyRanges(int row, int column, const S21Matrix& matrix) {
   }
 }
 
-bool S21Matrix::operator==(const S21Matrix& other) const {
-  return this->EqMatrix(other);
-}
-
 const double& S21Matrix::operator()(int row, int column) const {
   VerifyRanges(row, column, *this);
 
@@ -34,18 +30,6 @@ double& S21Matrix::operator()(int row, int column) {
   VerifyRanges(row, column, *this);
 
   return this->matrix_[row * this->Columns() + column];
-}
-
-S21Matrix S21Matrix::operator*(const S21Matrix& other) const {
-  S21Matrix result(*this);
-  result.MulMatrix(other);
-
-  return result;
-}
-
-S21Matrix& S21Matrix::operator*=(const S21Matrix& other) {
-  (*this).MulMatrix(other);
-  return *this;
 }
 
 }  // namespace s21

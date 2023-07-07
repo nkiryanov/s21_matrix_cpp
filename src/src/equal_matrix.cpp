@@ -3,7 +3,9 @@
 
 #include "s21_matrix_oop.h"
 
-bool s21::S21Matrix::EqMatrix(const S21Matrix& other) const {
+namespace s21 {
+
+bool S21Matrix::EqMatrix(const S21Matrix& other) const {
   if (this->rows_ != other.rows_ || this->columns_ != other.columns_) {
     return false;
   }
@@ -16,3 +18,9 @@ bool s21::S21Matrix::EqMatrix(const S21Matrix& other) const {
 
   return true;
 }
+
+bool S21Matrix::operator==(const S21Matrix& other) const {
+  return this->EqMatrix(other);
+}
+
+}  // namespace s21

@@ -4,8 +4,9 @@ include(GoogleTest)
 add_executable(
   "tests_matrix_oop"
   matrix/tests_constuctors.cpp
-  matrix/tests_operators.cpp
+  matrix/tests_get_by_index_operator.cpp
   matrix/tests_eq_matrix.cpp
+  matrix/tests_sum_matrix.cpp
   matrix/tests_mul_matrix.cpp
 )
 
