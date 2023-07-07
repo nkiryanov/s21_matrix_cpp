@@ -12,6 +12,8 @@ add_executable(
   matrix/tests_multiply_number.cc
   matrix/tests_multiply_matrix.cc
   matrix/tests_transpose_matrix.cc
+  matrix/tests_minor_matrix.cc
+  matrix/tests_determinant_matrix.cc
 )
 
 target_link_libraries(
