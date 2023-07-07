@@ -1,6 +1,6 @@
 #include <stdexcept>
 
-#include "s21_matrix_oop.cpp"
+#include "s21_matrix_oop.h"
 
 namespace s21 {
 

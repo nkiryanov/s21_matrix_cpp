@@ -30,6 +30,8 @@ class S21Matrix {
   void MulNumber(double number);
   void MulMatrix(const S21Matrix& other);
 
+  S21Matrix Transpose() const;
+
   const double& operator()(int row, int column) const;
   double& operator()(int row, int column);
   bool operator==(const S21Matrix& other) const;

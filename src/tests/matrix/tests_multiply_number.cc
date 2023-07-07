@@ -53,3 +53,11 @@ TEST(MultiplyByNumber, SelfMultiplyingByNumberOperatorWorks) {
   EXPECT_EQ(matrix.Columns(), 3);
   EXPECT_THAT(matrix.Data(), ElementsAre(2, 4, 6, 8, 10, 12));
 }
+
+TEST(MultiplyByNumber, EmptyMatrixCouldBeMultiplied) {
+  s21::S21Matrix empty_matrix;
+
+  s21::S21Matrix result = empty_matrix * 10;
+
+  EXPECT_TRUE(result == empty_matrix);
+}
