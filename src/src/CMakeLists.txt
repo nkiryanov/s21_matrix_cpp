@@ -12,6 +12,7 @@ add_library(
   multiply_number.cc
   multiply_matrix.cc
   transpose_matrix.cc
+  minor_matrix.cc
   ${HEADER_LIST}
 )
 
