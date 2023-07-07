@@ -4,6 +4,23 @@
 
 Работа с матрицами в CPP
 
+### Как установить:
+1. Для сборки нужен `cmake`
+2. Т.к. проект учебный, то устанавливается в `{repository_root}/_install_dir`
+    ```bash
+    cd src
+    make install
+    ```
+3. Так установятся:
+    - статичная библиотека `s21_matrix_oop.a` в `_install_dir/lib`
+    - публичный хэдер `s21_matrix_oop.h` в `_install_dir/include`
+4. При использовании библиотеки используйте ключи для подключения хэдеров и библиотеки. Например:
+    ```bash
+    g++ -c --std=c++17 main.cc -I _install_dir/include/
+    g++ --std=c++17 main.o -L _install_dir/lib/ -libs21_matrix_oop
+    ```
+ 
+
 ### Класс матрицы:
 
 ```cpp

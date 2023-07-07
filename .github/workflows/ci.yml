@@ -28,4 +28,4 @@ jobs:
         run: make valgrind_tests
 
       - name: try to gen gcov_report
-        run: make gcov_report
+        run: make coverage_html_report

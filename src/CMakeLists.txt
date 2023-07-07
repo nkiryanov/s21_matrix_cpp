@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.22.1)
+cmake_minimum_required(VERSION 3.23.1)
 
 project("MatrixOOP" VERSION 0.0.1)
 
@@ -28,7 +28,7 @@ if(CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)
     append_coverage_compiler_flags()
 
     setup_target_for_coverage_gcovr_html(
-      NAME "gcov_coverage_report"
+      NAME "coverage_report"
       EXECUTABLE ctest
       EXCLUDE "tests/*"
     )

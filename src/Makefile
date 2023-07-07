@@ -4,8 +4,9 @@ BUILD_TESTING := ON
 ENABLE_COVERAGE := OFF
 CMAKE_BUILD_TYPE := Debug
 
-BUILD_DIR = $(CMAKE_ROOT)/../build/$(CMAKE_BUILD_TYPE)/
-INSTALL_DIR = $(CMAKE_ROOT)/../_install_dir/
+BUILD_DIR_ROOT := $(CMAKE_ROOT)/../build
+BUILD_DIR = $(BUILD_DIR_ROOT)/$(CMAKE_BUILD_TYPE)
+INSTALL_DIR = $(CMAKE_ROOT)/../_install_dir
 
 # Hardocoded test exec
 # This defenitly should be changed to use "ctest -T memcheck" instead, but didn't
@@ -15,7 +16,7 @@ HARDCODED_TEST_EXEX = $(BUILD_DIR)/tests/tests_matrix_oop
 SRC := $(shell find $(CMAKE_ROOT) -name "*.c" -o -name "*.cpp" -o -name "*.cc")
 HEADERS := $(shell find $(CMAKE_ROOT) -name "*.h" -o -name "*.hpp")
 
-.PHONY: all lint fmt build test tests intstall gcov_report echo clean
+.PHONY: all lint fmt build test tests intstall gcov_report echo clean s21_matrix_oop.a
 
 all: install
 
@@ -37,9 +38,14 @@ tests: build
 valgrind_tests: build
 	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --verbose --error-exitcode=1 $(HARDCODED_TEST_EXEX)
 
-gcov_report: ENABLE_COVERAGE = ON
-gcov_report: build
-	cmake --build $(BUILD_DIR) --target gcov_coverage_report
+coverage_html_report: ENABLE_COVERAGE = ON
+coverage_html_report: build
+	cmake --build $(BUILD_DIR) --target coverage_report
+
+gcov_report: coverage_html_report
+	open $(BUILD_DIR)/gcov_coverage_report/index.html
+
+s21_matrix_oop.a: install 
 
 install: BUILD_TESTING = OFF
 install: CMAKE_BUILD_TYPE = Release
@@ -54,4 +60,4 @@ echo:
 	@echo "SRC = $(SRC)"
 
 clean: uninstall
-	rm -rf $(BUILD_DIR) 
+	rm -rf $(BUILD_DIR_ROOT) 
