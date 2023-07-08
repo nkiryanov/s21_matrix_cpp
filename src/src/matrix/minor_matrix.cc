@@ -1,6 +1,6 @@
 #include <stdexcept>
 
-#include "s21_matrix_oop.h"
+#include "matrix/s21_matrix_oop.h"
 
 namespace s21 {
 
@@ -18,7 +18,7 @@ S21Matrix S21Matrix::MinorMatrix(int row, int column) const {
 
   if (row < 0 || row >= this->Rows()) {
     throw std::range_error("The row number out of range for the matrix.");
-  };
+  }
 
   if (column < 0 || column >= this->Columns()) {
     throw std::range_error("The columns number out of range for the matrix.");

@@ -1,8 +1,8 @@
-#include "s21_matrix_oop.h"
+#include "matrix/s21_matrix_oop.h"
 
 namespace s21 {
 
-void S21Matrix::MulNumber(double number) {
+void S21Matrix::MulNumber(double number) noexcept {
   for (auto& cell_value : this->matrix_) {
     cell_value *= number;
   }

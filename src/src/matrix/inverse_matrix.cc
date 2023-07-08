@@ -1,7 +1,7 @@
 #include <cmath>
 #include <stdexcept>
 
-#include "s21_matrix_oop.h"
+#include "matrix/s21_matrix_oop.h"
 
 namespace s21 {
 

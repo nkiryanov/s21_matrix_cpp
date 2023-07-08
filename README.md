@@ -13,10 +13,10 @@
     ```
 3. Так установятся:
     - статичная библиотека `s21_matrix_oop.a` в `_install_dir/lib`
-    - публичный хэдер `s21_matrix_oop.h` в `_install_dir/include`
+    - публичный хэдер `s21_matrix_oop.h` в `_install_dir/include/matrix`
 4. При использовании библиотеки используйте ключи для подключения хэдеров и библиотеки. Например:
     ```bash
-    g++ -c --std=c++17 main.cc -I _install_dir/include/
+    g++ -c --std=c++17 main.cc -I _install_dir/include/matrix
     g++ --std=c++17 main.o -L _install_dir/lib/ -libs21_matrix_oop
     ```
  

@@ -2,7 +2,7 @@
 
 #include "gmock/gmock.h"
 #include "gtest/gtest.h"
-#include "s21_matrix_oop.h"
+#include "matrix/s21_matrix_oop.h"
 
 TEST(SubtractMatrix, SubtractingEmptyMatricesDoNothing) {
   s21::S21Matrix first_empty;

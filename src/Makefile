@@ -23,6 +23,7 @@ all: install
 lint:
 	@clang-format --style=Google --Werror --dry-run $(SRC) $(HEADERS) && echo "Clagn-format passed"
 	@cppcheck $(SRC) $(HEADERS) --language=c++
+	@cpplint --filter=-legal/copyright,-build/header_guard $(SRC) $(HEADERS)
 
 fmt:
 	@clang-format --style=Google --Werror -i $(SRC) $(HEADERS) && echo "Formatted"
@@ -43,7 +44,7 @@ coverage_html_report: build
 	cmake --build $(BUILD_DIR) --target coverage_report
 
 gcov_report: coverage_html_report
-	open $(BUILD_DIR)/gcov_coverage_report/index.html
+	open $(BUILD_DIR)/coverage_report/index.html
 
 s21_matrix_oop.a: install 
 
