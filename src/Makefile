@@ -44,7 +44,7 @@ coverage_html_report: build
 	cmake --build $(BUILD_DIR) --target coverage_report
 
 gcov_report: coverage_html_report
-	open $(BUILD_DIR)/gcov_coverage_report/index.html
+	open $(BUILD_DIR)/coverage_report/index.html
 
 s21_matrix_oop.a: install 
 

@@ -38,7 +38,7 @@ if(CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)
   add_compile_options(-Wall -Werror -Wextra)
 endif()
 
-add_subdirectory("src")
+add_subdirectory("src/matrix")
 
 if(BUILD_TESTING AND CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)
   add_subdirectory(tests)

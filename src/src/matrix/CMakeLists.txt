@@ -22,14 +22,14 @@ add_library(
 
 target_include_directories(
   "s21_matrix_oop"
-  PUBLIC ../include
+  PUBLIC ../../include
 )
 
 target_sources("s21_matrix_oop" PUBLIC
     FILE_SET public_headers
     TYPE HEADERS
-    BASE_DIRS ../include
-    FILES ../include/matrix/s21_matrix_oop.h
+    BASE_DIRS ../../include
+    FILES ../../include/matrix/s21_matrix_oop.h
   )
 
 install(TARGETS "s21_matrix_oop" FILE_SET public_headers 
