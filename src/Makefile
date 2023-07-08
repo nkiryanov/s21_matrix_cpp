@@ -11,7 +11,7 @@ INSTALL_DIR = $(CMAKE_ROOT)/../_install_dir
 # Hardocoded test exec
 # This defenitly should be changed to use "ctest -T memcheck" instead, but didn't
 # find an easy way how to do that
-HARDCODED_TEST_EXEX = $(BUILD_DIR)/tests/tests_matrix_oop
+HARDCODED_TEST_EXEX = $(BUILD_DIR)/tests/matrix/tests_matrix_oop
 
 SRC := $(shell find $(CMAKE_ROOT) -name "*.c" -o -name "*.cpp" -o -name "*.cc")
 HEADERS := $(shell find $(CMAKE_ROOT) -name "*.h" -o -name "*.hpp")
