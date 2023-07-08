@@ -2,7 +2,7 @@
 
 #include "gmock/gmock.h"
 #include "gtest/gtest.h"
-#include "s21_matrix_oop.h"
+#include "matrix/s21_matrix_oop.h"
 
 TEST(MatrixCalcComplements, ComplementFor3x3MatrixCalculated) {
   const s21::S21Matrix matrix(3, 3,

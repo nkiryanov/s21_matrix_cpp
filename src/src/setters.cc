@@ -1,7 +1,7 @@
 #include <algorithm>
 #include <stdexcept>
 
-#include "s21_matrix_oop.h"
+#include "matrix/s21_matrix_oop.h"
 
 namespace s21 {
 void S21Matrix::SetRows(int desired_rows) {

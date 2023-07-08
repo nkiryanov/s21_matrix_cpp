@@ -1,11 +1,11 @@
 #include <cmath>
 #include <stdexcept>
 
-#include "s21_matrix_oop.h"
+#include "matrix/s21_matrix_oop.h"
 
 namespace s21 {
 
-bool S21Matrix::EqMatrix(const S21Matrix& other) const {
+bool S21Matrix::EqMatrix(const S21Matrix& other) const noexcept {
   if (this->Rows() != other.Rows() || this->Columns() != other.Columns()) {
     return false;
   }
@@ -19,7 +19,7 @@ bool S21Matrix::EqMatrix(const S21Matrix& other) const {
   return true;
 }
 
-bool S21Matrix::operator==(const S21Matrix& other) const {
+bool S21Matrix::operator==(const S21Matrix& other) const noexcept {
   return this->EqMatrix(other);
 }
 

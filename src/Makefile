@@ -23,6 +23,7 @@ all: install
 lint:
 	@clang-format --style=Google --Werror --dry-run $(SRC) $(HEADERS) && echo "Clagn-format passed"
 	@cppcheck $(SRC) $(HEADERS) --language=c++
+	@cpplint --filter=-legal/copyright,-build/header_guard $(SRC) $(HEADERS)
 
 fmt:
 	@clang-format --style=Google --Werror -i $(SRC) $(HEADERS) && echo "Formatted"
