@@ -11,7 +11,7 @@ class S21Matrix {
  public:
   S21Matrix();
   explicit S21Matrix(int rows);
-  S21Matrix(int rows, int columns);
+  explicit S21Matrix(int rows, int columns);
   S21Matrix(int rows, int columns, std::initializer_list<double> values);
   S21Matrix(int rows, int columns,
             std::initializer_list<std::initializer_list<double>> rows_list);

@@ -30,7 +30,7 @@ if(CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)
     setup_target_for_coverage_gcovr_html(
       NAME "coverage_report"
       EXECUTABLE ctest
-      EXCLUDE "tests/*"
+      EXCLUDE "tests/matrix/*"
     )
   endif()
 
@@ -38,8 +38,8 @@ if(CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)
   add_compile_options(-Wall -Werror -Wextra)
 endif()
 
-add_subdirectory("src")
+add_subdirectory("src/matrix")
 
 if(BUILD_TESTING AND CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)
-  add_subdirectory(tests)
+  add_subdirectory(tests/matrix)
 endif()
