@@ -5,7 +5,7 @@
 
 namespace s21 {
 
-static int VerifyRange(int matrix_dimension) {
+static inline int VerifyRange(int matrix_dimension) {
   if (matrix_dimension < 0) {
     throw std::invalid_argument("Row or colons must be not negative");
   }
@@ -13,7 +13,7 @@ static int VerifyRange(int matrix_dimension) {
   return matrix_dimension;
 }
 
-static const std::initializer_list<double>& VerifyInitializerList(
+static inline const std::initializer_list<double>& VerifyInitializerList(
     int rows, int columns, const std::initializer_list<double>& matrix_values) {
   if (static_cast<size_t>(rows * columns) != matrix_values.size()) {
     throw std::invalid_argument("Provided values not match the matrix size");
@@ -22,7 +22,7 @@ static const std::initializer_list<double>& VerifyInitializerList(
   return matrix_values;
 }
 
-static const std::vector<double> VerifyListOfInitializerLists(
+static inline const std::vector<double> VerifyListOfInitializerLists(
     int rows, int columns,
     const std::initializer_list<std::initializer_list<double>>& rows_list) {
   if (static_cast<size_t>(rows) != rows_list.size()) {

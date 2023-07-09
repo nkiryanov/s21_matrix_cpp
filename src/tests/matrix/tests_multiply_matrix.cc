@@ -12,9 +12,9 @@ TEST(MulMatrix, EmptyCompatibleMatricesReturnEmptyMatrix) {
 
   first.MulMatrix(second);
 
-  EXPECT_EQ(first.Rows(), 3);
-  EXPECT_EQ(first.Columns(), 3);
-  EXPECT_THAT(first.Data(), ElementsAre(0, 0, 0, 0, 0, 0, 0, 0, 0));
+  EXPECT_EQ(first.GetRows(), 3);
+  EXPECT_EQ(first.GetColumns(), 3);
+  EXPECT_THAT(first.GetData(), ElementsAre(0, 0, 0, 0, 0, 0, 0, 0, 0));
 }
 
 TEST(MulMatrix, MulAllRowsAndColumns) {
@@ -23,9 +23,9 @@ TEST(MulMatrix, MulAllRowsAndColumns) {
 
   first.MulMatrix(second);
 
-  EXPECT_EQ(first.Rows(), 3);
-  EXPECT_EQ(first.Columns(), 3);
-  EXPECT_THAT(first.Data(), ElementsAre(9, 12, 15, 19, 26, 33, 29, 40, 51));
+  EXPECT_EQ(first.GetRows(), 3);
+  EXPECT_EQ(first.GetColumns(), 3);
+  EXPECT_THAT(first.GetData(), ElementsAre(9, 12, 15, 19, 26, 33, 29, 40, 51));
 }
 
 TEST(MulMatrix, ThrowIfMatricesNotCompatibleForMul) {

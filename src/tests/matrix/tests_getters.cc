@@ -7,13 +7,13 @@
 TEST(MatrixGetters, RowsReturnRows) {
   const s21::S21Matrix matrix(2, 3);
 
-  EXPECT_EQ(matrix.Rows(), 2);
+  EXPECT_EQ(matrix.GetRows(), 2);
 }
 
 TEST(MatrixGetters, ColumnsReturnColumns) {
   const s21::S21Matrix matrix(2, 3);
 
-  EXPECT_EQ(matrix.Columns(), 3);
+  EXPECT_EQ(matrix.GetColumns(), 3);
 }
 
 TEST(MatrixGetters, EpsilonReturnClassStaticEpsilon) {

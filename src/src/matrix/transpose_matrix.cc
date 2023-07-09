@@ -3,14 +3,14 @@
 namespace s21 {
 
 S21Matrix S21Matrix::Transpose() const noexcept {
-  if (this->Rows() == 0 && this->Columns() == 0) {
+  if (this->GetRows() == 0 && this->GetColumns() == 0) {
     return S21Matrix();
   }
 
-  S21Matrix transposed(this->Columns(), this->Rows());
+  S21Matrix transposed(this->GetColumns(), this->GetRows());
 
-  for (int i = 0; i != transposed.Rows(); ++i) {
-    for (int j = 0; j != transposed.Columns(); ++j) {
+  for (int i = 0; i != transposed.GetRows(); ++i) {
+    for (int j = 0; j != transposed.GetColumns(); ++j) {
       transposed(i, j) = (*this)(j, i);
     }
   }

@@ -9,9 +9,9 @@ TEST(MatrixSetter, RowsIncreasedCorrectlyForEmptyMatrix) {
 
   matrix.SetRows(3);
 
-  EXPECT_EQ(matrix.Rows(), 3);
-  EXPECT_EQ(matrix.Columns(), 0);
-  EXPECT_EQ(matrix.Data().size(), 0);
+  EXPECT_EQ(matrix.GetRows(), 3);
+  EXPECT_EQ(matrix.GetColumns(), 0);
+  EXPECT_EQ(matrix.GetData().size(), 0);
 }
 
 TEST(MatrixSetter, ColumnsIncreasedCorrectlyForEmptyMatrix) {
@@ -19,9 +19,9 @@ TEST(MatrixSetter, ColumnsIncreasedCorrectlyForEmptyMatrix) {
 
   matrix.SetColumns(3);
 
-  EXPECT_EQ(matrix.Rows(), 0);
-  EXPECT_EQ(matrix.Columns(), 3);
-  EXPECT_EQ(matrix.Data().size(), 0);
+  EXPECT_EQ(matrix.GetRows(), 0);
+  EXPECT_EQ(matrix.GetColumns(), 3);
+  EXPECT_EQ(matrix.GetData().size(), 0);
 }
 
 TEST(MatrixSetter, NotEmptyMatrixIncreasedOkByRows) {
@@ -29,8 +29,8 @@ TEST(MatrixSetter, NotEmptyMatrixIncreasedOkByRows) {
 
   matrix.SetRows(2);
 
-  EXPECT_EQ(matrix.Rows(), 2);
-  EXPECT_EQ(matrix.Columns(), 1);
+  EXPECT_EQ(matrix.GetRows(), 2);
+  EXPECT_EQ(matrix.GetColumns(), 1);
   EXPECT_EQ(matrix(0, 0), 10);
   EXPECT_EQ(matrix(1, 0), 0);
 }
@@ -40,8 +40,8 @@ TEST(MatrixSetter, NotEmptyMatrixIncreasedOkByColumns) {
 
   matrix.SetColumns(2);
 
-  EXPECT_EQ(matrix.Rows(), 1);
-  EXPECT_EQ(matrix.Columns(), 2);
+  EXPECT_EQ(matrix.GetRows(), 1);
+  EXPECT_EQ(matrix.GetColumns(), 2);
   EXPECT_EQ(matrix(0, 0), 10);
   EXPECT_EQ(matrix(0, 1), 0);
 }
@@ -51,8 +51,8 @@ TEST(MatrixSetter, NotEmptyMatrixDecreasedOkByRows) {
 
   matrix.SetRows(1);
 
-  EXPECT_EQ(matrix.Rows(), 1);
-  EXPECT_EQ(matrix.Columns(), 2);
+  EXPECT_EQ(matrix.GetRows(), 1);
+  EXPECT_EQ(matrix.GetColumns(), 2);
   EXPECT_EQ(matrix(0, 0), 1);
   EXPECT_EQ(matrix(0, 1), 2);
 }
@@ -62,8 +62,8 @@ TEST(MatrixSetter, NotEmptyMatrixDecreasedOkByColumns) {
 
   matrix.SetColumns(1);
 
-  EXPECT_EQ(matrix.Rows(), 2);
-  EXPECT_EQ(matrix.Columns(), 1);
+  EXPECT_EQ(matrix.GetRows(), 2);
+  EXPECT_EQ(matrix.GetColumns(), 1);
   EXPECT_EQ(matrix(0, 0), 1);
   EXPECT_EQ(matrix(1, 0), 3);
 }

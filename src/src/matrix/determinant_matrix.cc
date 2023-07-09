@@ -7,14 +7,12 @@ namespace s21 {
 // We use primitive recursion algorithm that is not efficient for matrices sized
 // more than 5 (and becomes significant for size > 8) but it's ok for the task
 double S21Matrix::Determinant() const {
-  // Edge cases
-  if (this->Rows() != this->Columns() || this->Rows() == 0) {
+  if (this->GetRows() != this->GetColumns() || this->GetRows() == 0) {
     throw std::logic_error(
         "Determinant could be computed only for not empty square matrices");
   }
 
-  // Regular case
-  int size = this->Rows();
+  int size = this->GetRows();
 
   if (size == 1) {
     return (*this)(0, 0);

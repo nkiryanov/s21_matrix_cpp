@@ -20,7 +20,7 @@ TEST(MatrixTranspose, MatrixActuallyTransposed) {
 
   s21::S21Matrix transposed = matrix.Transpose();
 
-  EXPECT_EQ(transposed.Rows(), 2);
-  EXPECT_EQ(transposed.Columns(), 3);
-  EXPECT_THAT(transposed.Data(), ElementsAre(1, 2, 3, 4, 5, 6));
+  EXPECT_EQ(transposed.GetRows(), 2);
+  EXPECT_EQ(transposed.GetColumns(), 3);
+  EXPECT_THAT(transposed.GetData(), ElementsAre(1, 2, 3, 4, 5, 6));
 }

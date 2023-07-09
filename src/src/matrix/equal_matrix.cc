@@ -6,7 +6,8 @@
 namespace s21 {
 
 bool S21Matrix::EqMatrix(const S21Matrix& other) const noexcept {
-  if (this->Rows() != other.Rows() || this->Columns() != other.Columns()) {
+  if (this->GetRows() != other.GetRows() ||
+      this->GetColumns() != other.GetColumns()) {
     return false;
   }
 

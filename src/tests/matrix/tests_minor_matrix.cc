@@ -21,8 +21,8 @@ class MinorMatrixTest : public ::testing::Test {
 TEST_F(MinorMatrixTest, MinorMatrixByFirstRowAndFirstColumnCreated) {
   s21::S21Matrix minor = matrix4x4.MinorMatrix(0, 0);
 
-  EXPECT_EQ(minor.Rows(), 3);
-  EXPECT_EQ(minor.Columns(), 3);
+  EXPECT_EQ(minor.GetRows(), 3);
+  EXPECT_EQ(minor.GetColumns(), 3);
   EXPECT_TRUE(minor == s21::S21Matrix(3, 3,
                                       {
                                           {6, 7, 8},
@@ -34,8 +34,8 @@ TEST_F(MinorMatrixTest, MinorMatrixByFirstRowAndFirstColumnCreated) {
 TEST_F(MinorMatrixTest, MinorMatrixByMiddleRowAndColumnCreated) {
   s21::S21Matrix minor = matrix4x4.MinorMatrix(2, 1);
 
-  EXPECT_EQ(minor.Rows(), 3);
-  EXPECT_EQ(minor.Columns(), 3);
+  EXPECT_EQ(minor.GetRows(), 3);
+  EXPECT_EQ(minor.GetColumns(), 3);
   EXPECT_TRUE(minor == s21::S21Matrix(3, 3,
                                       {
                                           {1, 3, 4},

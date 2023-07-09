@@ -3,7 +3,6 @@ file(GLOB HEADER_LIST CONFIGURE_DEPENDS "${MatrixOOP_SOURCE_DIR}/include/matrix/
 add_library(
   "s21_matrix_oop"
   s21_matrix_oop.cc
-  getters.cc
   setters.cc
   constructors.cc
   get_by_index_operator.cc
