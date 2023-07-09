@@ -6,8 +6,7 @@
 namespace s21 {
 
 S21Matrix S21Matrix::InverseMatrix() const {
-  // Edge cases
-  if (this->Rows() != this->Columns() || this->Rows() == 0) {
+  if (this->GetRows() != this->GetColumns() || this->GetRows() == 0) {
     throw std::logic_error(
         "Inverse matrix could be computed only for not empty square matrices");
   }
@@ -18,8 +17,7 @@ S21Matrix S21Matrix::InverseMatrix() const {
     throw std::overflow_error("The determinant is equal zero");
   }
 
-  // Regular cases
-  int size = this->Rows();
+  int size = this->GetRows();
   s21::S21Matrix transposed_complements = (*this).CalcComplements().Transpose();
   s21::S21Matrix inverse_matrix(size);
 

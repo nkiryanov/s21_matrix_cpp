@@ -14,8 +14,8 @@ TEST(MatrixCalcComplements, ComplementFor3x3MatrixCalculated) {
 
   s21::S21Matrix complements = matrix.CalcComplements();
 
-  EXPECT_EQ(complements.Rows(), 3);
-  EXPECT_EQ(complements.Columns(), 3);
+  EXPECT_EQ(complements.GetRows(), 3);
+  EXPECT_EQ(complements.GetColumns(), 3);
   EXPECT_TRUE(complements == s21::S21Matrix(3, 3,
                                             {
                                                 {-1., 1., 1.},

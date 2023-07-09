@@ -1,4 +1,5 @@
 CMAKE_ROOT := .
+CMAKE_COUNT_PARALLEL_JOBS := 4
 
 BUILD_TESTING := ON
 ENABLE_COVERAGE := OFF
@@ -23,14 +24,14 @@ all: install
 lint:
 	@clang-format --style=Google --Werror --dry-run $(SRC) $(HEADERS) && echo "Clagn-format passed"
 	@cppcheck $(SRC) $(HEADERS) --language=c++
-	@cpplint --filter=-legal/copyright,-build/header_guard $(SRC) $(HEADERS)
+	@cpplint --filter=-legal/copyright $(SRC) $(HEADERS)
 
 fmt:
 	@clang-format --style=Google --Werror -i $(SRC) $(HEADERS) && echo "Formatted"
 
 build:
 	cmake -S . -B $(BUILD_DIR) -DCMAKE_BUILD_TYPE=$(CMAKE_BUILD_TYPE) -DBUILD_TESTING=$(BUILD_TESTING) -DENABLE_COVERAGE=$(ENABLE_COVERAGE)
-	cmake --build $(BUILD_DIR)
+	cmake --build $(BUILD_DIR) --parallel $(CMAKE_COUNT_PARALLEL_JOBS)
 
 test: tests
 tests: build
@@ -41,7 +42,7 @@ valgrind_tests: build
 
 coverage_html_report: ENABLE_COVERAGE = ON
 coverage_html_report: build
-	cmake --build $(BUILD_DIR) --target coverage_report
+	cmake --build $(BUILD_DIR) --target coverage_report --parallel $(CMAKE_COUNT_PARALLEL_JOBS)
 
 gcov_report: coverage_html_report
 	open $(BUILD_DIR)/coverage_report/index.html

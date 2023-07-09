@@ -11,25 +11,25 @@ TEST(MatrixConstructors, MatrixSizeCreateSquareMatrix) {
 
   s21::S21Matrix matrix(5);
 
-  EXPECT_EQ(matrix.Rows(), 5);
-  EXPECT_EQ(matrix.Columns(), 5);
-  EXPECT_EQ(matrix.Data(), expected_values);
+  EXPECT_EQ(matrix.GetRows(), 5);
+  EXPECT_EQ(matrix.GetColumns(), 5);
+  EXPECT_EQ(matrix.GetData(), expected_values);
 }
 
 TEST(MatrixConstructors, CreatedEmptyMatrixByDefault) {
   s21::S21Matrix matrix;
 
-  EXPECT_EQ(matrix.Rows(), 0);
-  EXPECT_EQ(matrix.Columns(), 0);
-  EXPECT_EQ(matrix.Data().size(), 0);
+  EXPECT_EQ(matrix.GetRows(), 0);
+  EXPECT_EQ(matrix.GetColumns(), 0);
+  EXPECT_EQ(matrix.GetData().size(), 0);
 }
 
 TEST(MatrixConstructors, CreatedEmptyMatrixIfAnyOfDimensionEqualZero) {
   s21::S21Matrix matrix(5, 0);
 
-  EXPECT_EQ(matrix.Rows(), 5);
-  EXPECT_EQ(matrix.Columns(), 0);
-  EXPECT_EQ(matrix.Data().size(), 0);
+  EXPECT_EQ(matrix.GetRows(), 5);
+  EXPECT_EQ(matrix.GetColumns(), 0);
+  EXPECT_EQ(matrix.GetData().size(), 0);
 }
 
 TEST(MatrixConstructors, CreateMatrixWithRowsAndColumnsIfSet) {
@@ -37,17 +37,17 @@ TEST(MatrixConstructors, CreateMatrixWithRowsAndColumnsIfSet) {
 
   s21::S21Matrix matrix(3, 2);
 
-  EXPECT_EQ(matrix.Rows(), 3);
-  EXPECT_EQ(matrix.Columns(), 2);
-  EXPECT_EQ(matrix.Data(), expected_values);
+  EXPECT_EQ(matrix.GetRows(), 3);
+  EXPECT_EQ(matrix.GetColumns(), 2);
+  EXPECT_EQ(matrix.GetData(), expected_values);
 }
 
 TEST(MatrixConstructors, CreateMatrixWithPredefinedValuesInOneList) {
   s21::S21Matrix matrix(2, 3, {1, 2, 3, 4, 5, 6});
 
-  EXPECT_EQ(matrix.Rows(), 2);
-  EXPECT_EQ(matrix.Columns(), 3);
-  EXPECT_THAT(matrix.Data(), ElementsAre(1, 2, 3, 4, 5, 6));
+  EXPECT_EQ(matrix.GetRows(), 2);
+  EXPECT_EQ(matrix.GetColumns(), 3);
+  EXPECT_THAT(matrix.GetData(), ElementsAre(1, 2, 3, 4, 5, 6));
 }
 
 TEST(MatrixConstructors, CreateMatrixWithPredefinedValuesInListOfLists) {
@@ -57,9 +57,9 @@ TEST(MatrixConstructors, CreateMatrixWithPredefinedValuesInListOfLists) {
                             {4, 5, 6},
                         });
 
-  EXPECT_EQ(matrix.Rows(), 2);
-  EXPECT_EQ(matrix.Columns(), 3);
-  EXPECT_THAT(matrix.Data(), ElementsAre(1, 2, 3, 4, 5, 6));
+  EXPECT_EQ(matrix.GetRows(), 2);
+  EXPECT_EQ(matrix.GetColumns(), 3);
+  EXPECT_THAT(matrix.GetData(), ElementsAre(1, 2, 3, 4, 5, 6));
 }
 
 TEST(MatrixConstructors, CreateByCopyAssignmentWorks) {
@@ -67,9 +67,9 @@ TEST(MatrixConstructors, CreateByCopyAssignmentWorks) {
 
   s21::S21Matrix created_by_copy = matrix_to_copy;
 
-  EXPECT_EQ(created_by_copy.Rows(), 2);
-  EXPECT_EQ(created_by_copy.Columns(), 1);
-  EXPECT_EQ(created_by_copy.Data(), matrix_to_copy.Data());
+  EXPECT_EQ(created_by_copy.GetRows(), 2);
+  EXPECT_EQ(created_by_copy.GetColumns(), 1);
+  EXPECT_EQ(created_by_copy.GetData(), matrix_to_copy.GetData());
 }
 
 TEST(MatrixConstructors, CopyByAssignmentWorks) {
@@ -78,9 +78,9 @@ TEST(MatrixConstructors, CopyByAssignmentWorks) {
 
   existed_matrix = matrix_to_copy;
 
-  EXPECT_EQ(existed_matrix.Rows(), 2);
-  EXPECT_EQ(existed_matrix.Columns(), 1);
-  EXPECT_EQ(existed_matrix.Data(), matrix_to_copy.Data());
+  EXPECT_EQ(existed_matrix.GetRows(), 2);
+  EXPECT_EQ(existed_matrix.GetColumns(), 1);
+  EXPECT_EQ(existed_matrix.GetData(), matrix_to_copy.GetData());
 }
 
 TEST(MatrixConstructors, MoveConstructorWorks) {
@@ -88,10 +88,10 @@ TEST(MatrixConstructors, MoveConstructorWorks) {
 
   s21::S21Matrix created_matrix(std::move(matrix_to_move));
 
-  EXPECT_EQ(created_matrix.Rows(), 2);
-  EXPECT_EQ(created_matrix.Columns(), 1);
-  EXPECT_THAT(created_matrix.Data(), ElementsAre(1, 2));
-  EXPECT_EQ(matrix_to_move.Data().size(), 0);  // actually moved
+  EXPECT_EQ(created_matrix.GetRows(), 2);
+  EXPECT_EQ(created_matrix.GetColumns(), 1);
+  EXPECT_THAT(created_matrix.GetData(), ElementsAre(1, 2));
+  EXPECT_EQ(matrix_to_move.GetData().size(), 0);  // actually moved
 }
 
 TEST(MatrixConstructors, MoveAssignmentWorks) {
@@ -100,10 +100,10 @@ TEST(MatrixConstructors, MoveAssignmentWorks) {
 
   existed_matrix = std::move(matrix_to_move);
 
-  EXPECT_EQ(existed_matrix.Rows(), 2);
-  EXPECT_EQ(existed_matrix.Columns(), 1);
-  EXPECT_THAT(existed_matrix.Data(), ElementsAre(1, 2));
-  EXPECT_EQ(matrix_to_move.Data().size(), 0);  // actually moved
+  EXPECT_EQ(existed_matrix.GetRows(), 2);
+  EXPECT_EQ(existed_matrix.GetColumns(), 1);
+  EXPECT_THAT(existed_matrix.GetData(), ElementsAre(1, 2));
+  EXPECT_EQ(matrix_to_move.GetData().size(), 0);  // actually moved
 }
 
 TEST(MatrixConstructors, ThrowIfRowsOrColumnsNegative) {

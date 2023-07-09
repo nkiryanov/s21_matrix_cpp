@@ -9,9 +9,9 @@ TEST(MultiplyByNumber, MultiplyingEmptyMatrixDoNothing) {
 
   matrix.MulNumber(10);
 
-  EXPECT_EQ(matrix.Rows(), 0);
-  EXPECT_EQ(matrix.Columns(), 0);
-  EXPECT_EQ(matrix.Data().size(), 0);
+  EXPECT_EQ(matrix.GetRows(), 0);
+  EXPECT_EQ(matrix.GetColumns(), 0);
+  EXPECT_EQ(matrix.GetData().size(), 0);
 }
 
 TEST(MultiplyByNumber, MultiplyingByNumberMultiplyAllCells) {
@@ -19,9 +19,9 @@ TEST(MultiplyByNumber, MultiplyingByNumberMultiplyAllCells) {
 
   matrix.MulNumber(2);
 
-  EXPECT_EQ(matrix.Rows(), 4);
-  EXPECT_EQ(matrix.Columns(), 2);
-  EXPECT_THAT(matrix.Data(), ElementsAre(2, 4, 6, 8, 10, 12, 14, 16));
+  EXPECT_EQ(matrix.GetRows(), 4);
+  EXPECT_EQ(matrix.GetColumns(), 2);
+  EXPECT_THAT(matrix.GetData(), ElementsAre(2, 4, 6, 8, 10, 12, 14, 16));
 }
 
 TEST(MultiplyByNumber, MultiplyingByNumberOperator) {
@@ -29,9 +29,9 @@ TEST(MultiplyByNumber, MultiplyingByNumberOperator) {
 
   s21::S21Matrix result = matrix * 2;
 
-  EXPECT_EQ(result.Rows(), 2);
-  EXPECT_EQ(result.Columns(), 3);
-  EXPECT_THAT(result.Data(), ElementsAre(2, 4, 6, 8, 10, 12));
+  EXPECT_EQ(result.GetRows(), 2);
+  EXPECT_EQ(result.GetColumns(), 3);
+  EXPECT_THAT(result.GetData(), ElementsAre(2, 4, 6, 8, 10, 12));
 }
 
 TEST(MultiplyByNumber, MultiplyingByNumberOperatorAlsoWorks) {
@@ -39,9 +39,9 @@ TEST(MultiplyByNumber, MultiplyingByNumberOperatorAlsoWorks) {
 
   s21::S21Matrix result = 2 * matrix;
 
-  EXPECT_EQ(result.Rows(), 2);
-  EXPECT_EQ(result.Columns(), 3);
-  EXPECT_THAT(result.Data(), ElementsAre(2, 4, 6, 8, 10, 12));
+  EXPECT_EQ(result.GetRows(), 2);
+  EXPECT_EQ(result.GetColumns(), 3);
+  EXPECT_THAT(result.GetData(), ElementsAre(2, 4, 6, 8, 10, 12));
 }
 
 TEST(MultiplyByNumber, SelfMultiplyingByNumberOperatorWorks) {
@@ -49,9 +49,9 @@ TEST(MultiplyByNumber, SelfMultiplyingByNumberOperatorWorks) {
 
   matrix *= 2;
 
-  EXPECT_EQ(matrix.Rows(), 2);
-  EXPECT_EQ(matrix.Columns(), 3);
-  EXPECT_THAT(matrix.Data(), ElementsAre(2, 4, 6, 8, 10, 12));
+  EXPECT_EQ(matrix.GetRows(), 2);
+  EXPECT_EQ(matrix.GetColumns(), 3);
+  EXPECT_THAT(matrix.GetData(), ElementsAre(2, 4, 6, 8, 10, 12));
 }
 
 TEST(MultiplyByNumber, EmptyMatrixCouldBeMultiplied) {

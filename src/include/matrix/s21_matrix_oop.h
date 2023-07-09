@@ -1,12 +1,12 @@
-#ifndef MATRIX_S21_MATRIX_OOP_H_
-#define MATRIX_S21_MATRIX_OOP_H_
+#ifndef SRC_INCLUDE_MATRIX_S21_MATRIX_OOP_H_
+#define SRC_INCLUDE_MATRIX_S21_MATRIX_OOP_H_
 
 #include <vector>
 
 namespace s21 {
 
 class S21Matrix {
-  static constexpr double epsilon_ = 10e-7;
+  static constexpr double epsilon_ = 1e-6;
 
  public:
   S21Matrix();
@@ -16,10 +16,11 @@ class S21Matrix {
   S21Matrix(int rows, int columns,
             std::initializer_list<std::initializer_list<double>> rows_list);
 
-  double Epsilon() const noexcept;
-  int Rows() const noexcept;
-  int Columns() const noexcept;
-  const std::vector<double>& Data() const noexcept;
+  inline double Epsilon() const noexcept { return epsilon_; }
+  inline int GetRows() const noexcept { return rows_; }
+  inline int GetColumns() const noexcept { return columns_; }
+  inline const std::vector<double>& GetData() const noexcept { return matrix_; }
+
   void SetRows(int desired_rows);
   void SetColumns(int desired_columns);
 
@@ -57,4 +58,4 @@ S21Matrix operator*(double number, const S21Matrix& matrix);
 
 }  // namespace s21
 
-#endif  // MATRIX_S21_MATRIX_OOP_H_
+#endif  // SRC_INCLUDE_MATRIX_S21_MATRIX_OOP_H_

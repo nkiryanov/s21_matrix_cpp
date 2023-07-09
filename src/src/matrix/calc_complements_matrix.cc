@@ -5,15 +5,13 @@
 namespace s21 {
 
 S21Matrix S21Matrix::CalcComplements() const {
-  // Edge cases
-  if (this->Rows() != this->Columns() || this->Rows() == 0) {
+  if (this->GetRows() != this->GetColumns() || this->GetRows() == 0) {
     throw std::logic_error(
         "Complements matrix could be computed only for not empty square "
         "matrices");
   }
 
-  // Regular cases
-  int size = this->Rows();
+  int size = this->GetRows();
   S21Matrix complements(size);
 
   for (int i = 0; i != size; ++i) {
